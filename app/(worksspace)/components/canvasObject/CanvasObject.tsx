@@ -1,6 +1,8 @@
 
 import CanvasObjectBase from './CanvasObjectBase'
 import TestImage from '../../testObjects/TestImage'
+import { Chilanka } from 'next/font/google'
+import { Children } from 'react'
 
 type CanvasObjectProps = {
     id: string
@@ -10,6 +12,7 @@ type CanvasObjectProps = {
     height: number
     rotation?: number
     zIndex?: number
+    children?: React.ReactNode
 }
 
 export default function CanvasObject({
@@ -19,7 +22,8 @@ export default function CanvasObject({
     width,
     height,
     rotation = 0,
-    zIndex = 0
+    zIndex = 0,
+    children
 }: CanvasObjectProps) {
     return (
         <div
@@ -49,7 +53,7 @@ export default function CanvasObject({
                     transform: `rotate(${rotation}deg)`
                 }}
             >
-                <TestImage />
+                {children}
             </div>
         </div>
     )

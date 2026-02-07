@@ -14,11 +14,31 @@ export default function ObjectCollection() {
                 y={100}
                 width={300}
                 height={100}
-            />
-            <Circle />
+            >
+                <TestImage />
+            </CanvasObject>
+            <CanvasObject
+                id="test-image"
+                x={100}
+                y={400}
+                width={300}
+                height={100}
+            >
+                <Circle />
+            </CanvasObject>
+            <CanvasObject
+                id="test-image"
+                x={500}
+                y={200}
+                width={300}
+                height={100}
+            >
+                <Triangles />
+            </CanvasObject>
 
 
-            <Triangles />
+
+
         </div>
     )
 }
