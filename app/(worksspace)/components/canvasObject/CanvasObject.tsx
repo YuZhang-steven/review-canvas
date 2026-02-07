@@ -1,8 +1,6 @@
 
 import CanvasObjectBase from './CanvasObjectBase'
-import TestImage from '../../testObjects/TestImage'
-import { Chilanka } from 'next/font/google'
-import { Children } from 'react'
+
 
 type CanvasObjectProps = {
     id: string
