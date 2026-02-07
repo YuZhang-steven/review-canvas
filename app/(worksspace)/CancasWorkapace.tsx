@@ -5,14 +5,10 @@ import World from "./components/World"
 
 export default function CancasWorkapace() {
     return (
-        <div id="cancas-workspace" className="h-full w-full ">
-            <div id="background"
-                className="h-full w-full absolute top-0 left-0 z-1"
-            ></div>
+        <div id="cancas-workspace" className="h-full w-full relative">
             <Viewport />
             <ToolBar />
             <SideBar />
-            <div>CancasWorkapace</div>
         </div>
 
     )

@@ -12,14 +12,17 @@ export default function World(
 ) {
     return (
         <div id="world"
-            className="absolute h-full w-full top-0 left-0 z-2 origin-top-left"
+            className="absolute top-0 left-0 overflow-hidden"
             style={{
                 transform: `translate(${camera.tx}px, ${camera.ty}px) scale(${camera.scale})`,
-                width: 6000,
-                height: 6000,
+                transformOrigin: '0 0',
+                width: '100%',
+                height: '100%',
             }}
         >
-            <ObjectCollection />
+            <div className="w-[6000px] h-[6000px]">
+                <ObjectCollection />
+            </div>
         </div>
 
     )
