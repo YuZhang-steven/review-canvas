@@ -1,5 +1,5 @@
 import { Camera } from "@react-three/fiber";
-import { focusPoint } from "../model/camera";
+import { focusPoint } from "../type/camera";
 
 export function screenToWorld(p: focusPoint, cam: Camera): focusPoint {
     const x = (p.x - cam.tx) / cam.scale;

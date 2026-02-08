@@ -1,5 +1,5 @@
 import { generateId } from "../lib/generateId";
-import { Thread } from "../model/comment";
+import { Thread } from "../type/comment";
 import { useThreadStore } from "../state/useThreadStore";
 
 export class ThreadMap {
