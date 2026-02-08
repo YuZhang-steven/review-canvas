@@ -5,6 +5,7 @@ import { createThreadAt } from "../../lib/creatThreadAt";
 import { threadMap } from "../../dataStore/threadMap";
 import { Camera } from "../../type/camera";
 import { useCurrToolStore } from "../../state/useCurrToolStore";
+import { useCurrentSelectedStore } from "../../state/useCurrentSelectedStore";
 
 
 type DragRef = {
@@ -17,6 +18,9 @@ export default function useCommentToolClick({ cam }: {
     cam: Camera
 }) {
     const setCurrentTool = useCurrToolStore.getState().setCurrentTool;
+    const setCurrentSelected = useCurrentSelectedStore.getState().setCurrentSelected;
+
+
     const dragRef = useRef<DragRef>(null);
     const resetDrag = () => {
         dragRef.current = null;
@@ -45,8 +49,9 @@ export default function useCommentToolClick({ cam }: {
                 y: dragRef.current?.screenStartY
             }, cam)
 
-            createThreadAt(coordWorld.x, coordWorld.y);
+            const id = createThreadAt(coordWorld.x, coordWorld.y);
             setCurrentTool("select");
+            setCurrentSelected(id, "thread");
             console.log(threadMap.size());
 
         }

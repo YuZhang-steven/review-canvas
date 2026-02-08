@@ -9,7 +9,7 @@ export class ThreadMap {
     this.store = new Map();
   }
 
-  add(x: number, y: number, linkItem?: string): void {
+  add(x: number, y: number, linkItem?: string): string {
     const id = generateId("thread");
     const thread: Thread = {
       x,
@@ -24,6 +24,7 @@ export class ThreadMap {
     };
     this.store.set(thread.id, thread);
     useThreadStore.getState().addThreadId(id);
+    return id;
   }
 
   get(id: string): Thread | undefined {
