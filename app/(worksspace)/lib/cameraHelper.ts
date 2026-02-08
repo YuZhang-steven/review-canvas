@@ -1,4 +1,4 @@
-import { Camera } from "@react-three/fiber";
+import { Camera } from "../type/camera";
 import { screenToWorld, worldToScreen } from "./viewScreenCoordTrans";
 import { focusPoint } from "../type/camera";
 

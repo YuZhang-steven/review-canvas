@@ -1,6 +1,6 @@
 "use client";
 
-import { Camera } from "@react-three/fiber";
+import { Camera } from "../type/camera";
 import { getLocalPoint } from "../lib/dom";
 import { clampScale, zoomAt } from "../lib/cameraHelper";
 import { useRightClickHandle } from "./useRightClickHandle";
@@ -16,7 +16,7 @@ export function useViewportControls(
 ) {
 
     const rightClickHandles = useRightClickHandle({ cam, setCam });
-    const leftClickHandles = useLeftClickHandle();
+    const leftClickHandles = useLeftClickHandle({ cam });
 
 
 
@@ -27,13 +27,13 @@ export function useViewportControls(
     };
 
     const onPointerMove = (e: PointerEvent) => {
-        if (e.button === 0) leftClickHandles.handles.onPointerMove(e);
-        if (e.button === 2) rightClickHandles.handles.onPointerMove(e);
+        if ((e.buttons & 1) !== 0) leftClickHandles.handles.onPointerMove(e);
+        if ((e.buttons & 2) !== 0) rightClickHandles.handles.onPointerMove(e);
 
     };
 
     const onPointerUp = (e: PointerEvent) => {
-        if (e.button === 0) leftClickHandles.handles.onPointerUp();
+        if (e.button === 0) leftClickHandles.handles.onPointerUp(e);
         if (e.button === 2) rightClickHandles.handles.onPointerUp();
 
     };
@@ -47,7 +47,7 @@ export function useViewportControls(
     };
 
     const onWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-        e.preventDefault();
+
 
         const cursor = getLocalPoint(e.currentTarget ? (e as any) : (e as any));
         const factor = Math.exp(-e.deltaY / 500);

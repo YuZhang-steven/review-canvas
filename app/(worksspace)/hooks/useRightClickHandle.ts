@@ -35,12 +35,17 @@ export function useRightClickHandle({ cam, setCam }: {
     };
     const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
         const drag = dragRef.current;
-        if (!drag) return;
+        if (!drag) {
+            return;
+        }
 
         const dx = e.clientX - drag.sx;
         const dy = e.clientY - drag.sy;
         // use the snapshot 'drag' (not dragRef.current!) to avoid null timing issues
-        setCam((c: Camera) => ({ ...c, tx: drag.stx + dx, ty: drag.sty + dy }));
+        setCam((c: Camera) => {
+            const newCam = { ...c, tx: drag.stx + dx, ty: drag.sty + dy };
+            return newCam;
+        });
     };
     const onPointerUp = () => {
         dragRef.current = null;
