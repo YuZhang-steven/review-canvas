@@ -47,10 +47,13 @@ export default function Viewport() {
         }
     }
     function handlePointMove(e: React.PointerEvent<HTMLDivElement>) {
-        if (!dragRef.current) return;
+        //snapshot drag start, because dragRef can get cleared in the same frame
+        const drag = dragRef.current;
+        if (!drag) return;
+
         //compute mouse delta in screen pixels
-        const dx = e.clientX - dragRef.current.sx;
-        const dy = e.clientY - dragRef.current.sy;
+        const dx = e.clientX - drag.sx;
+        const dy = e.clientY - drag.sy;
         setCam((c) => ({
             ...c,
             //add the delt to starting camera translation 
@@ -59,8 +62,7 @@ export default function Viewport() {
         }))
 
     }
-    function handlePointUp(e: React.PointerEvent<HTMLDivElement>) {
-        if (!dragRef.current) return;
+    function reSetDragRef() {
         dragRef.current = null;
     }
 
@@ -80,14 +82,19 @@ export default function Viewport() {
         })
     }
 
+
     return (
         <div
             className='relative h-full w-full overflow-hidden'
             style={{ touchAction: 'none' }}
             onPointerDown={handlePointDown}
             onPointerMove={handlePointMove}
-            onPointerUp={handlePointUp}
+            onPointerUp={reSetDragRef}
             onWheel={handleWheel}
+
+            //handle pointerCancel,lost
+            onPointerCancel={reSetDragRef}
+            onLostPointerCapture={reSetDragRef}
         >
             {/* HUD */}
             <div className="absolute left-3 top-3 z-50 rounded bg-white/80 px-2 py-1 text-xs">
