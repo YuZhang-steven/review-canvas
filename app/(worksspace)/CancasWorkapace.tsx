@@ -1,7 +1,7 @@
 import SideBar from "./components/SideBar"
 import ToolBar from "./components/ToolBar"
 import Viewport from "./components/Viewport"
-import World from "./components/World"
+
 
 export default function CancasWorkapace() {
     return (
