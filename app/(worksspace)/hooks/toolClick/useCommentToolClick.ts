@@ -1,5 +1,10 @@
-import { Camera } from "@react-three/fiber";
+
 import { useRef } from "react";
+import { screenToWorld } from "../../lib/viewScreenCoordTrans";
+import { createThreadAt } from "../../lib/creatThreadAt";
+import { threadMap } from "../../dataStore/threadMap";
+import { Camera } from "../../type/camera";
+import { useCurrToolStore } from "../../state/useCurrToolStore";
 
 
 type DragRef = {
@@ -11,6 +16,7 @@ type DragRef = {
 export default function useCommentToolClick({ cam }: {
     cam: Camera
 }) {
+    const setCurrentTool = useCurrToolStore.getState().setCurrentTool;
     const dragRef = useRef<DragRef>(null);
     const resetDrag = () => {
         dragRef.current = null;
@@ -34,7 +40,17 @@ export default function useCommentToolClick({ cam }: {
         if (dragRef.current) {
             dragRef.current.screenEndX = e.clientX;
             dragRef.current.screenEndY = e.clientY;
+            const coordWorld = screenToWorld({
+                x: dragRef.current?.screenStartX,
+                y: dragRef.current?.screenStartY
+            }, cam)
+
+            createThreadAt(coordWorld.x, coordWorld.y);
+            setCurrentTool("select");
+            console.log(threadMap.size());
+
         }
+
 
 
     };

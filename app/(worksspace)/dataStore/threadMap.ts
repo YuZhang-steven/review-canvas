@@ -37,4 +37,9 @@ export class ThreadMap {
     }
     return deleted;
   }
+  size(): number {
+    return this.store.size;
+  }
 }
+
+export const threadMap = new ThreadMap();

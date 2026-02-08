@@ -1,5 +1,6 @@
-import { Camera } from "@react-three/fiber";
+
 import { useCurrToolStore } from "../state/useCurrToolStore";
+import { Camera } from "../type/camera";
 import useCommentToolClick from "./toolClick/useCommentToolClick";
 
 
@@ -7,8 +8,7 @@ export default function useLeftClickHandle({ cam }: {
     cam: Camera
 }) {
     const currentTool = useCurrToolStore((state) => state.currentTool);
-    const commentToolClick = useCommentToolClick(cam);
-
+    const commentToolClick = useCommentToolClick({ cam });
 
     const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
         if (e.button !== 0) return;
