@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-interface CurrentSelectedIdState {
+type CurrentSelectedIdState ={
   currentSelectedId: string | null;
   setCurrentSelectedId: (id: string | null) => void;
   clearCurrentSelectedId: () => void;

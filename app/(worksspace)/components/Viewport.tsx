@@ -30,6 +30,9 @@ export default function Viewport() {
 
     //handle drag
     function handlePointDown(e: React.PointerEvent<HTMLDivElement>) {
+        // Only handle right click (button 2)
+        if (e.button !== 2) return;
+
         e.currentTarget.setPointerCapture(e.pointerId);
         dragRef.current = {
             sx: e.clientX,
@@ -83,6 +86,7 @@ export default function Viewport() {
             onPointerMove={handlePointMove}
             onPointerUp={reSetDragRef}
             onWheel={handleWheel}
+            onContextMenu={(e) => e.preventDefault()}
 
             //handle pointerCancel,lost
             onPointerCancel={reSetDragRef}

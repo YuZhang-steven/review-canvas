@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-interface ThreadStore {
+type ThreadStore= {
   threadIds: string[];
   setThreadIds: (ids: string[]) => void;
   addThreadId: (id: string) => void;
