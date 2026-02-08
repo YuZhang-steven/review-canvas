@@ -2,6 +2,7 @@
 import { useRef, useState } from 'react'
 import World from './World'
 import { Camera, focusPoint } from '../model/camera';
+import { screenToWorld, worldToScreen } from '../lib/viewScreenCoordTrans';
 
 type DragRef = {
     //screen position, drag start
@@ -12,16 +13,7 @@ type DragRef = {
     sty: number
 } | null
 
-function screenToWorld(p: focusPoint, cam: Camera): focusPoint {
-    const x = (p.x - cam.tx) / cam.scale;
-    const y = (p.y - cam.ty) / cam.scale;
-    return { x, y };
-}
-function worldToScreen(p: focusPoint, cam: Camera): focusPoint {
-    const x = p.x * cam.scale + cam.tx;
-    const y = p.y * cam.scale + cam.ty;
-    return { x, y };
-}
+
 
 function zoomAt(cursor: focusPoint, cam: Camera, nextScale: number): Camera {
     const before = screenToWorld(cursor, cam);
