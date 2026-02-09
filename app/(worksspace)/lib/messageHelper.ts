@@ -1,6 +1,6 @@
 import { messageMap } from "../dataStore/messageMap";
 import { threadMap } from "../dataStore/threadMap";
-import { MessageText, MessageToDo } from "../type/Message";
+import { Message, MessageText, MessageToDo } from "../type/Message";
 
 export function createMessageAt(threadId: string, text: string): string {
     try {
@@ -101,3 +101,42 @@ export function updateTodoMessageCompleted(
     }
 }
 
+export function getMessagesByThreadId(threadId: string): Message[] {
+    const thread = threadMap.get(threadId)
+    const messageIds = thread?.messagesId ?? [];
+    return messageMap.getMultiple(messageIds);
+}
+
+export function getAllSolvedTodoMessages(): Message[] {
+
+    const allIds = messageMap.getAllIds();
+    const result = []
+    for (const id of allIds) {
+        const message = messageMap.get(id);
+        if (!message || message.type !== "todo") continue;
+        const todoMessage = message.content as MessageToDo;
+        if (todoMessage.completed) {
+            result.push(message);
+        }
+    }
+    return result;
+}
+
+export function getAllUnsolvedTodoMessages(): Message[] {
+    const allIds = messageMap.getAllIds();
+    const result = []
+    for (const id of allIds) {
+        const message = messageMap.get(id);
+        if (!message || message.type !== "todo") continue;
+        const todoMessage = message.content as MessageToDo;
+        if (!todoMessage.completed) {
+            result.push(message);
+        }
+    }
+    return result;
+}
+
+export function getAllMessages(): Message[] {
+    const allIds = messageMap.getAllIds();
+    return messageMap.getMultiple(allIds);
+}

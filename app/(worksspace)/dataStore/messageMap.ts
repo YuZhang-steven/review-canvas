@@ -42,8 +42,14 @@ export class MessageMap {
     get(id: string): Message | undefined {
         return this.store.get(id);
     }
+    getMultiple(ids: string[]): Message[] {
+        return ids.map((id) => this.store.get(id)).filter((message) => message !== undefined);
+    }
     size(): number {
         return this.store.size;
+    }
+    getAllIds(): string[] {
+        return Array.from(this.store.keys());
     }
 }
 
