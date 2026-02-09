@@ -14,7 +14,6 @@ export default function World() {
 
     function handleClick(e: React.MouseEvent<HTMLDivElement>) {
         e.stopPropagation();
-        console.log("world clicked");
         clearCurrentSelectedId();
         setSideBarOpen(false);
 

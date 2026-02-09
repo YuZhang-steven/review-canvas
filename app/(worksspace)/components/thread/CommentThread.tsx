@@ -31,7 +31,6 @@ export default function CommentThread({ threadId }: CommentThreadProps) {
     const handleClick = (e: React.MouseEvent) => {
         e.stopPropagation();
         if (currentTool !== "select") return;
-        console.log('Thread clicked:', id);
         setCurrentSelected(id, "thread");
     };
 

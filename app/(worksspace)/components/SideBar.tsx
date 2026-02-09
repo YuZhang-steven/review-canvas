@@ -11,7 +11,6 @@ export default function SideBar() {
     const currentSelected = useCurrentSelectedStore(state => state.currentSelectedId);
 
     useEffect(() => {
-        console.log("selected", currentSelected);
         if (currentSelected) {
             setSideBarOpen(true);
         }
@@ -26,18 +25,22 @@ export default function SideBar() {
                     ${sideBarOpen ? 'w-64' : 'w-0'}
                     absolute top-0 right-0
                     overflow-hidden
+                    flex flex-col gap-4
                 `}
             >
-                <div className="p-4 text-white flex items-center justify-between">
-                    <h2 className="text-lg font-bold">Sidebar</h2>
-                    <button
-                        onClick={() => setSideBarOpen(false)}
-                        className="p-1 hover:bg-green-400 rounded transition-colors"
-                    >
-                        <X size={20} />
-                    </button>
+                <div className="p-4">
+                    <div className=" text-white flex items-center justify-between ">
+                        <h2 className="text-lg font-bold">Sidebar</h2>
+                        <button
+                            onClick={() => setSideBarOpen(false)}
+                            className="p-1 hover:bg-green-400 rounded transition-colors"
+                        >
+                            <X size={20} />
+                        </button>
+                    </div>
+                    <SideBarContent />
                 </div>
-                <SideBarContent />
+
             </div>
 
             {/* Trigger area - visible strip, toggles sidebar on click */}
