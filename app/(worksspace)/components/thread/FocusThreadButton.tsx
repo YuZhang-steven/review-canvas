@@ -1,8 +1,8 @@
 "use client"
 import { CrosshairIcon } from "lucide-react"
-import { threadMap } from "../dataStore/threadMap"
-import { useCanvasCameraStore } from "../state/useCanvasCameraStore"
-import { useCurrentSelectedStore } from "../state/useCurrentSelectedStore"
+import { threadMap } from "../../dataStore/threadMap"
+import { useCanvasCameraStore } from "../../state/useCanvasCameraStore"
+import { useCurrentSelectedStore } from "../../state/useCurrentSelectedStore"
 
 export default function FocusThreadButton() {
     const { cam, setCam } = useCanvasCameraStore()
