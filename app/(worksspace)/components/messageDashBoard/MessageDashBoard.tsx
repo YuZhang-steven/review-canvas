@@ -18,7 +18,9 @@ export default function MessageDashBoard() {
                 activeFilter={activeFilter}
                 setActiveFilter={setActiveFilter}
             />
-            <MessageList />
+            <MessageList
+                activeFilter={activeFilter}
+            />
 
         </div>
     )
