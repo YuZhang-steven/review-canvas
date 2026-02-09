@@ -1,12 +1,12 @@
 
 import { useRef } from "react";
 import { screenToWorld } from "../../lib/viewScreenCoordTrans";
-import { createThreadAt } from "../../lib/threadsHelper";
-import { threadMap } from "../../dataStore/threadMap";
+
 
 import { useCurrToolStore } from "../../state/useCurrToolStore";
 import { useCurrentSelectedStore } from "../../state/useCurrentSelectedStore";
 import { CanvasCamera } from "../../type/CanvasCamera";
+import { useThreadStore } from "../../state/useThreadStore";
 
 
 type DragRef = {
@@ -50,10 +50,9 @@ export default function useCommentToolClick({ cam }: {
                 y: dragRef.current?.screenStartY
             }, cam)
 
-            const id = createThreadAt(coordWorld.x, coordWorld.y);
+            const id = useThreadStore.getState().addThread(coordWorld.x, coordWorld.y);
             setCurrentTool("select");
             setCurrentSelected(id, "thread");
-            console.log(threadMap.size());
 
         }
 

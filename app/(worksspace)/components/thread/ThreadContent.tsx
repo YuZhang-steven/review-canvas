@@ -1,7 +1,7 @@
 "use client"
-import { threadMap } from "../../dataStore/threadMap";
 import { getMessageIdsByThreadId } from "../../lib/messageHelper";
 import { useCurrentSelectedStore } from "../../state/useCurrentSelectedStore";
+import { useThreadStore } from "../../state/useThreadStore";
 import AddMessageCard from "./AddMessageCard";
 import FocusThreadButton from "./FocusThreadButton";
 import MessageCard from "./MessageCard";
@@ -9,8 +9,7 @@ import MessageCard from "./MessageCard";
 
 export default function ThreadContent() {
     const currentSelectedId = useCurrentSelectedStore(state => state.currentSelectedId)
-    if (!currentSelectedId) return null;
-    const thread = threadMap.get(currentSelectedId);
+    const thread = useThreadStore(state => state.threadsById[currentSelectedId ?? ""]);
     if (!thread) return null;
     const { x, y, id, title, description } = thread;
 
