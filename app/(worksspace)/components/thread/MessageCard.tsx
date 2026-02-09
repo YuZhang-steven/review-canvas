@@ -1,5 +1,6 @@
 "use client"
-import { getMessage } from "../../lib/messageHelper";
+
+import { useMessageStore } from "../../state/useMessageStore";
 import MessageCardWrapper from "./MessageCardWrapper";
 
 type MessageCardProps = {
@@ -7,7 +8,7 @@ type MessageCardProps = {
 }
 
 export default function MessageCard({ id }: MessageCardProps) {
-    const message = getMessage(id);
+    const message = useMessageStore(state => state.messagesById[id]);
     if (!message) return null;
 
     const { type, content, createdAt } = message;

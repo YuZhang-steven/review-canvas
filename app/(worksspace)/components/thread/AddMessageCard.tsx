@@ -1,17 +1,17 @@
 "use client"
 import { useState } from "react";
 import { SendIcon } from "lucide-react";
-import { createMessage } from "../../lib/messageHelper";
 import { useCurrentSelectedStore } from "../../state/useCurrentSelectedStore";
+import { useMessageStore } from "../../state/useMessageStore";
 
 export default function AddMessageCard() {
     const [text, setText] = useState("");
     const currentSelectedId = useCurrentSelectedStore(state => state.currentSelectedId);
+    const addTextMessage = useMessageStore.getState().addTextMessage;
 
     const handleSubmit = () => {
         if (!text.trim() || !currentSelectedId) return;
-
-        createMessage(currentSelectedId, text.trim());
+        addTextMessage(currentSelectedId, text.trim());
         setText("");
     };
 

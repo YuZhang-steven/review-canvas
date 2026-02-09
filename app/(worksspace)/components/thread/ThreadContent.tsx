@@ -1,5 +1,5 @@
 "use client"
-import { getMessageIdsByThreadId } from "../../lib/messageHelper";
+
 import { useCurrentSelectedStore } from "../../state/useCurrentSelectedStore";
 import { useThreadStore } from "../../state/useThreadStore";
 import AddMessageCard from "./AddMessageCard";
@@ -13,7 +13,7 @@ export default function ThreadContent() {
     if (!thread) return null;
     const { x, y, id, title, description } = thread;
 
-    const messageIds = getMessageIdsByThreadId(id);
+    const messageIds = thread.messagesId
 
     return (
         <div id="thread-content" className="flex flex-col h-full justify-between pb-8">
