@@ -1,12 +1,12 @@
 "use client"
 
-import { useMessageStore } from "../../state/useMessageStore";
-import { MessageImage, MessageText, MessageToDo } from "../../type/Message";
-import MsgCardFoot from "./messageCard/MsgCardFoot";
-import MsgImage from "./messageCard/MsgImage";
-import MsgText from "./messageCard/MsgText";
-import MsgTodo from "./messageCard/MsgTodo";
-import MessageCardWrapper from "./MessageCardWrapper";
+import { useMessageStore } from "../../../state/useMessageStore";
+import { MessageImage, MessageText, MessageToDo } from "../../../type/Message";
+import MsgCardFoot from "./MsgCardFoot";
+import MsgImage from "./MsgImage";
+import MsgText from "./MsgText";
+import MsgTodo from "./MsgTodo";
+import MessageCardWrapper from "../MessageCardWrapper";
 
 type MessageCardProps = {
     id: string;
@@ -33,7 +33,7 @@ export default function MessageCard({ id }: MessageCardProps) {
                 {type === 'todo' && (
                     <MsgTodo content={content as MessageToDo} />
                 )}
-                <MsgCardFoot tags={tags} createdAt={createdAt} />
+                <MsgCardFoot id={id} tags={tags} createdAt={createdAt} />
             </div>
         </MessageCardWrapper>
     );

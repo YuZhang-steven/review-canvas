@@ -4,7 +4,7 @@ import { useCurrentSelectedStore } from "../../state/useCurrentSelectedStore";
 import { useThreadStore } from "../../state/useThreadStore";
 import AddMessageCard from "./AddMessageCard";
 import FocusThreadButton from "./FocusThreadButton";
-import MessageCard from "./MessageCard";
+import MessageCard from "./messageCard/MessageCard";
 
 
 export default function ThreadContent() {
