@@ -1,5 +1,3 @@
-
-
 import { useCanvasCameraStore } from "../../state/useCanvasCameraStore";
 import { useCurrentSelectedStore } from "../../state/useCurrentSelectedStore";
 import { useCurrToolStore } from "../../state/useCurrToolStore";
