@@ -1,4 +1,7 @@
 
+import { focusThread } from "../../lib/cameraHelper";
+import { useCanvasCameraStore } from "../../state/useCanvasCameraStore";
+import { useThreadStore } from "../../state/useThreadStore";
 import { Message } from "../../type/Message";
 import TodoButton from "../TodoButton";
 
@@ -8,8 +11,12 @@ type MessageListCardProps = {
 }
 export default function MessageListCard({ id, message }: MessageListCardProps) {
     const { type, content, updatedAt, threadId } = message;
-
-
+    const thread = useThreadStore(state => state.threadsById[threadId]);
+    const cam = useCanvasCameraStore((state) => state.cam);
+    const setCam = useCanvasCameraStore((state) => state.setCam);
+    const handleClick = () => {
+        focusThread({ thread, cam, setCam })
+    }
 
     return (
         <div
@@ -18,6 +25,7 @@ export default function MessageListCard({ id, message }: MessageListCardProps) {
                     p-4 rounded-lg border transition-colors cursor-pointer      
                     bg-white border-gray-200 hover:bg-gray-50
                     `}
+            onClick={handleClick}
         >
             <div className="flex items-center justify-between mb-1">
                 <span className="text-sm font-semibold text-gray-800">{threadId}</span>

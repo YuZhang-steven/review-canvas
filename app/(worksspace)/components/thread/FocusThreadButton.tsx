@@ -3,6 +3,7 @@ import { CrosshairIcon } from "lucide-react"
 import { useCanvasCameraStore } from "../../state/useCanvasCameraStore"
 import { useCurrentSelectedStore } from "../../state/useCurrentSelectedStore"
 import { useThreadStore } from "../../state/useThreadStore"
+import { focusThread } from "../../lib/cameraHelper"
 
 export default function FocusThreadButton() {
     const { cam, setCam } = useCanvasCameraStore()
@@ -10,26 +11,7 @@ export default function FocusThreadButton() {
     if (!currentSelectedId) return
     const thread = useThreadStore(state => state.threadsById[currentSelectedId]);
 
-    const handleFocus = () => {
-        if (!thread) return
-
-        const { x, y } = thread
-
-        // If camera is not at 100% (scale !== 1), reset scale to 1
-        const newScale = cam.scale !== 1 ? 1 : cam.scale
-
-        // World (0,0) is at top-left of screen
-        // To center world point (x, y) at screen center:
-        // screenX = x * scale + tx = screenWidth / 2
-        // Therefore: tx = screenWidth / 2 - x * scale
-        const screenWidth = window.innerWidth
-        const screenHeight = window.innerHeight
-
-        const newTx = screenWidth / 2 - x * newScale
-        const newTy = screenHeight / 2 - y * newScale
-
-        setCam({ tx: newTx, ty: newTy, scale: newScale })
-    }
+    const handleFocus = () => { focusThread({ thread, cam, setCam }) }
 
     return (
         <button
