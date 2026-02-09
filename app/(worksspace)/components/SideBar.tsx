@@ -20,7 +20,7 @@ export default function SideBar() {
             {/* Sidebar body - width animates based on open state */}
             <div
                 className={`
-                    h-full bg-green-500
+                    h-full bg-amber-500
                     transition-all duration-300 ease-in-out
                     ${sideBarOpen ? 'w-64' : 'w-0'}
                     absolute top-0 right-0
@@ -33,7 +33,7 @@ export default function SideBar() {
                         <h2 className="text-lg font-bold">Sidebar</h2>
                         <button
                             onClick={() => setSideBarOpen(false)}
-                            className="p-1 hover:bg-green-400 rounded transition-colors"
+                            className="p-1 hover:bg-white/20 rounded transition-colors"
                         >
                             <X size={20} />
                         </button>
@@ -48,7 +48,7 @@ export default function SideBar() {
                 <div
                     id="sidebar-trigger"
                     className="absolute inset-y-0 right-0 w-2 cursor-pointer
-                 bg-green-600 hover:bg-green-500 transition-colors z-10"
+                 bg-amber-600 hover:bg-amber-500 transition-colors z-10"
                     onClick={() => setSideBarOpen(!sideBarOpen)}
                 />
             )}

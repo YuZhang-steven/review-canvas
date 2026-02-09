@@ -2,7 +2,7 @@ import { messageMap } from "../dataStore/messageMap";
 import { threadMap } from "../dataStore/threadMap";
 import { Message, MessageText, MessageToDo } from "../type/Message";
 
-export function createMessageAt(threadId: string, text: string): string {
+export function createMessage(threadId: string, text: string): string {
     try {
         const id = messageMap.add(text, threadId);
         const thread = threadMap.get(threadId);
@@ -101,10 +101,19 @@ export function updateTodoMessageCompleted(
     }
 }
 
+export function getMessage(id: string): Message | undefined {
+    return messageMap.get(id);
+}
+
 export function getMessagesByThreadId(threadId: string): Message[] {
     const thread = threadMap.get(threadId)
     const messageIds = thread?.messagesId ?? [];
     return messageMap.getMultiple(messageIds);
+}
+
+export function getMessageIdsByThreadId(threadId: string): string[] {
+    const thread = threadMap.get(threadId)
+    return thread?.messagesId ?? [];
 }
 
 export function getAllSolvedTodoMessages(): Message[] {

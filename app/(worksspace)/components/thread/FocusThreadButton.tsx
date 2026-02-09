@@ -38,7 +38,7 @@ export default function FocusThreadButton() {
             className="
                 relative p-2 rounded-lg transition-all duration-200
                 flex items-center justify-center
-                hover:bg-blue-500/20 hover:scale-105
+                hover:bg-white/20 hover:scale-105
                 cursor-pointer
                 text-blue-400
             "
@@ -46,10 +46,6 @@ export default function FocusThreadButton() {
         >
             <CrosshairIcon
                 size={20}
-                className="
-                    transition-colors duration-200
-                    group-hover:text-blue-300
-                "
             />
         </button>
     )
