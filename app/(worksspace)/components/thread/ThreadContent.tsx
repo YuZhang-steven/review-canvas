@@ -16,23 +16,28 @@ export default function ThreadContent() {
     const messageIds = getMessageIdsByThreadId(id);
 
     return (
-        <div>
-            <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-semibold text-blue-400">Located It</span>
-                <FocusThreadButton />
+        <div className="flex flex-col h-full">
+            <div className="shrink-0">
+                <div className="flex items-center justify-between mb-4">
+                    <span className="text-sm font-semibold text-blue-400">Located It</span>
+                    <FocusThreadButton />
+                </div>
+
+                <p>id</p>
+                <p>{id}</p>
+                <h2>{title}</h2>
+                <p>{description}</p>
             </div>
-            <p>id</p>
-            <p>{id}</p>
-            <h2>{title}</h2>
-            <p>{description}</p>
-            {messageIds.map((messageId) => (
-                <MessageCard key={messageId} id={messageId} />
-            ))}
+
+            <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+                <div className="flex flex-col gap-3">
+                    {messageIds.map((messageId) => (
+                        <MessageCard key={messageId} id={messageId} />
+                    ))}
+                </div>
+            </div>
+
             <AddMessageCard />
-            {/* <p>location</p>
-            <p>{x}, {y}</p> */}
         </div>
-
-
     )
 }
