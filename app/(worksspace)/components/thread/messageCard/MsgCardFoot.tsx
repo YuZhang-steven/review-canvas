@@ -6,11 +6,11 @@ import { useMessageStore } from "../../../state/useMessageStore";
 
 type MsgCardFootProps = {
     id: string;
-    tags: string[];
+
     createdAt: number;
 }
 
-export default function MsgCardFoot({ id, tags = [], createdAt }: MsgCardFootProps) {
+export default function MsgCardFoot({ id, createdAt }: MsgCardFootProps) {
     const [isHovered, setIsHovered] = useState(false);
 
     const { deleteMessage, updateText, changeToTodo, changeTodoToText } = useMessageStore();
@@ -60,18 +60,7 @@ export default function MsgCardFoot({ id, tags = [], createdAt }: MsgCardFootPro
                 <span className="text-xs text-gray-400">
                     {new Date(createdAt).toLocaleString()}
                 </span>
-                {tags.length > 0 && (
-                    <div className="flex gap-1">
-                        {tags.map((tag, index) => (
-                            <span
-                                key={index}
-                                className="text-xs px-1.5 py-0.5 bg-gray-100 text-gray-500 rounded"
-                            >
-                                {tag}
-                            </span>
-                        ))}
-                    </div>
-                )}
+
             </div>
 
             {/* Toolbar - shown on hover */}
