@@ -1,4 +1,4 @@
-import { useThreadStore } from "../../state/useThreadStore";
+
 import { Message } from "../../type/Message";
 import TodoButton from "../TodoButton";
 
@@ -8,6 +8,7 @@ type MessageListCardProps = {
 }
 export default function MessageListCard({ id, message }: MessageListCardProps) {
     const { type, content, updatedAt, threadId } = message;
+
 
 
     return (

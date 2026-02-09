@@ -17,7 +17,7 @@ export default function ThreadContent() {
 
     return (
         <div id="thread-content" className="flex flex-col h-full justify-between pb-8">
-            <div>
+            <div className="h-full flex flex-col">
                 <div className="shrink-0">
                     <div className="flex items-center justify-between mb-4">
                         <span className="text-sm font-semibold text-blue-400">Located It</span>
@@ -30,7 +30,7 @@ export default function ThreadContent() {
                     <p>{description}</p>
                 </div>
 
-                <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+                <div id="thread-content-messages" className="flex-1 overflow-y-auto custom-scrollbar">
                     <div className="flex flex-col gap-3">
                         {messageIds.map((messageId) => (
                             <MessageCard key={messageId} id={messageId} />

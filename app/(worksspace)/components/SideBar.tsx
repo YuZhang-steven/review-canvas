@@ -22,14 +22,13 @@ export default function SideBar() {
                 className={`
                     h-full bg-amber-500
                     transition-all duration-300 ease-in-out
-                    ${sideBarOpen ? 'w-64' : 'w-0'}
+                    ${sideBarOpen ? 'w-80' : 'w-0'}
                     absolute top-0 right-0
-                    overflow-hidden
-                    flex flex-col gap-4
+                    flex flex-col
                 `}
             >
-                <div className="p-4 h-full">
-                    <div className=" text-white flex items-center justify-between ">
+                <div className="p-4 flex flex-col h-full overflow-hidden">
+                    <div className=" text-white flex items-center justify-between shrink-0">
                         <h2 className="text-lg font-bold">Sidebar</h2>
                         <button
                             onClick={() => setSideBarOpen(false)}
