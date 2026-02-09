@@ -3,9 +3,10 @@ import { useRef } from "react";
 import { screenToWorld } from "../../lib/viewScreenCoordTrans";
 import { createThreadAt } from "../../lib/creatThreadAt";
 import { threadMap } from "../../dataStore/threadMap";
-import { Camera } from "../../type/camera";
+
 import { useCurrToolStore } from "../../state/useCurrToolStore";
 import { useCurrentSelectedStore } from "../../state/useCurrentSelectedStore";
+import { CanvasCamera } from "../../type/CanvasCamera";
 
 
 type DragRef = {
@@ -15,7 +16,7 @@ type DragRef = {
     screenEndY: number;
 } | null;
 export default function useCommentToolClick({ cam }: {
-    cam: Camera
+    cam: CanvasCamera
 }) {
     const setCurrentTool = useCurrToolStore.getState().setCurrentTool;
     const setCurrentSelected = useCurrentSelectedStore.getState().setCurrentSelected;

@@ -1,8 +1,12 @@
-import { Camera } from "../type/camera";
-import { screenToWorld, worldToScreen } from "./viewScreenCoordTrans";
-import { focusPoint } from "../type/camera";
 
-export function zoomAt(cursor: focusPoint, cam: Camera, nextScale: number): Camera {
+import { screenToWorld, worldToScreen } from "./viewScreenCoordTrans";
+import { CanvasCamera, focusPoint } from "../type/CanvasCamera";
+
+export function zoomAt(
+  cursor: focusPoint,
+  cam: CanvasCamera,
+  nextScale: number
+): CanvasCamera {
   const before = screenToWorld(cursor, cam);
   const next = { ...cam, scale: nextScale };
   const after = worldToScreen(before, next);

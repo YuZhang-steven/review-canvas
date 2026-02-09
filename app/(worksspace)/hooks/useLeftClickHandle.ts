@@ -1,12 +1,13 @@
 
+import { useCanvasCameraStore } from "../state/useCanvasCameraStore";
 import { useCurrToolStore } from "../state/useCurrToolStore";
-import { Camera } from "../type/camera";
+import { CanvasCamera } from "../type/CanvasCamera";
+
 import useCommentToolClick from "./toolClick/useCommentToolClick";
 
 
-export default function useLeftClickHandle({ cam }: {
-    cam: Camera
-}) {
+export default function useLeftClickHandle() {
+    const cam = useCanvasCameraStore((state) => state.cam);
     const currentTool = useCurrToolStore((state) => state.currentTool);
     const commentToolClick = useCommentToolClick({ cam });
 

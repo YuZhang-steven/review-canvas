@@ -1,5 +1,7 @@
 import { useRef } from "react";
-import { Camera } from "../type/camera";
+import { CanvasCamera } from "../type/CanvasCamera";
+import { useCanvasCameraStore } from "../state/useCanvasCameraStore";
+
 type DragRef = {
     //screen position, drag start
     sx: number;
@@ -10,11 +12,9 @@ type DragRef = {
 } | null
 
 //right click, pan the canvas
-export function useRightClickHandle({ cam, setCam }: {
-
-    cam: Camera,
-    setCam: React.Dispatch<React.SetStateAction<Camera>>
-}) {
+export function useRightClickHandle() {
+    const cam = useCanvasCameraStore((state) => state.cam);
+    const setCam = useCanvasCameraStore.getState().setCam;
     const dragRef = useRef<DragRef>(null);
 
     const resetDrag = () => {
@@ -42,9 +42,10 @@ export function useRightClickHandle({ cam, setCam }: {
         const dx = e.clientX - drag.sx;
         const dy = e.clientY - drag.sy;
         // use the snapshot 'drag' (not dragRef.current!) to avoid null timing issues
-        setCam((c: Camera) => {
-            const newCam = { ...c, tx: drag.stx + dx, ty: drag.sty + dy };
-            return newCam;
+        setCam({
+            ...cam,
+            tx: drag.stx + dx,
+            ty: drag.sty + dy,
         });
     };
     const onPointerUp = () => {

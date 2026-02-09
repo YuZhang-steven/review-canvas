@@ -1,21 +1,17 @@
-import { Camera } from "@react-three/fiber";
+
 import ObjectCollection from "./ObjectCollection";
 import ThreadCollection from "./thread/ThreadCollection";
+import { useCanvasCameraStore } from "../state/useCanvasCameraStore";
 
 
-type WorldProps = {
-    camera: Camera;
 
-}
-
-export default function World(
-    { camera }: WorldProps
-) {
+export default function World() {
+    const cam = useCanvasCameraStore((state) => state.cam);
     return (
         <div id="world"
             className="absolute top-0 left-0 overflow-hidden"
             style={{
-                transform: `translate(${camera.tx}px, ${camera.ty}px) scale(${camera.scale})`,
+                transform: `translate(${cam.tx}px, ${cam.ty}px) scale(${cam.scale})`,
                 transformOrigin: '0 0',
                 width: '100%',
                 height: '100%',

@@ -1,22 +1,21 @@
 "use client";
 
-import { Camera } from "../type/camera";
 import { getLocalPoint } from "../lib/dom";
 import { clampScale, zoomAt } from "../lib/cameraHelper";
 import { useRightClickHandle } from "./useRightClickHandle";
 import useLeftClickHandle from "./useLeftClickHandle";
+import { useCanvasCameraStore } from "../state/useCanvasCameraStore";
 
 
 type PointerEvent = React.PointerEvent<HTMLDivElement>
 
 
-export function useViewportControls(
-    cam: Camera,
-    setCam: React.Dispatch<React.SetStateAction<Camera>>
-) {
+export function useViewportControls() {
+    const cam = useCanvasCameraStore((state) => state.cam);
+    const setCam = useCanvasCameraStore.getState().setCam;
 
-    const rightClickHandles = useRightClickHandle({ cam, setCam });
-    const leftClickHandles = useLeftClickHandle({ cam });
+    const rightClickHandles = useRightClickHandle();
+    const leftClickHandles = useLeftClickHandle();
 
 
 
@@ -52,9 +51,13 @@ export function useViewportControls(
         const cursor = getLocalPoint(e.currentTarget ? (e as any) : (e as any));
         const factor = Math.exp(-e.deltaY / 500);
 
-        setCam((c: Camera) => {
-            const nextScale = clampScale(c.scale * factor, 0.1, 5);
-            return zoomAt(cursor, c, nextScale);
+        const nextScale = clampScale(cam.scale * factor, 0.1, 5);
+        const newCam = zoomAt(cursor, cam, nextScale);
+
+        setCam({
+            tx: newCam.tx,
+            ty: newCam.ty,
+            scale: newCam.scale,
         });
     };
 
