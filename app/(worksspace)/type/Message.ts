@@ -1,26 +1,30 @@
-export type MessageText = {
-    text: string;
+export type MessageText = { text: string };
+export type MessageImage = { image: string };
+export type MessageToDo = { text: string; image: string; completed: boolean };
 
-}
-export type MessageImage = {
-    image: string;
-}
-
-export type MessageToDo = {
-    text: string;
-    image: string;
-    completed: boolean;
-}
-
-export type Message = {
+type BaseMessage = {
     id: string;
     tags: string[];
-    type: "text" | "image" | "todo";
     createdAt: number;
     updatedAt: number;
-    content: MessageText | MessageImage | MessageToDo;
     threadId: string;
+};
 
-}
+export type TextMessage = BaseMessage & {
+    type: "text";
+    content: MessageText;
+};
+
+export type ImageMessage = BaseMessage & {
+    type: "image";
+    content: MessageImage;
+};
+
+export type TodoMessage = BaseMessage & {
+    type: "todo";
+    content: MessageToDo;
+};
+
+export type Message = TextMessage | ImageMessage | TodoMessage;
 
 

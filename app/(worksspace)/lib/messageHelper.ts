@@ -14,7 +14,7 @@ export function createMessage(threadId: string, text: string): string {
         return "error";
     }
 }
-export function deleteMessageAt(id: string): boolean {
+export function deleteMessage(id: string): boolean {
     try {
         const threadId = messageMap.get(id)?.threadId;
         if (!threadId) return false;
