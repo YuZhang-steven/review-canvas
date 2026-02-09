@@ -1,4 +1,5 @@
 import { useCurrentSelectedStore } from "../state/useCurrentSelectedStore";
+import MessageDashBoard from "./messageDashBoard/MessageDashBoard";
 import ThreadContent from "./thread/ThreadContent";
 
 export default function SideBarContent() {
@@ -6,8 +7,8 @@ export default function SideBarContent() {
     if (currentSelectedType === "thread") {
         return <ThreadContent />
     }
-    return (
+    else {
+        return <MessageDashBoard />
+    }
 
-        <div>SideBarContent</div>
-    )
 }
