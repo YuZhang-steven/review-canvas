@@ -1,5 +1,6 @@
 import { Camera } from "@react-three/fiber";
 import ObjectCollection from "./ObjectCollection";
+import ThreadCollection from "./thread/ThreadCollection";
 
 
 type WorldProps = {
@@ -22,6 +23,7 @@ export default function World(
         >
             <div className="w-[6000px] h-[6000px]">
                 <ObjectCollection />
+                <ThreadCollection />
             </div>
         </div>
 

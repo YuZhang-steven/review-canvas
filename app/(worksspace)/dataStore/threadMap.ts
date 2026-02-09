@@ -1,6 +1,7 @@
 import { generateId } from "../lib/generateId";
-import { Thread } from "../type/comment";
+
 import { useThreadStore } from "../state/useThreadStore";
+import { Thread } from "../type/Thread";
 
 export class ThreadMap {
   private store: Map<string, Thread>;
@@ -30,6 +31,7 @@ export class ThreadMap {
   get(id: string): Thread | undefined {
     return this.store.get(id);
   }
+
 
   delete(id: string): boolean {
     const deleted = this.store.delete(id);
