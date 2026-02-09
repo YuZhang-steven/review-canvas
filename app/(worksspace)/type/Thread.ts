@@ -10,5 +10,5 @@ export type Thread = {
     updatedAt: number;
     title: string;
     description: string;
-    messages: Message[];
+    messagesId: string[];
 }

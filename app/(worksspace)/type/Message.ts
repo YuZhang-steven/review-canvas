@@ -1,22 +1,26 @@
 export type MessageText = {
     text: string;
-    id: string;
-    createdAt: number;
+
 }
 export type MessageImage = {
     image: string;
-    id: string;
-    createdAt: number;
 }
 
 export type MessageToDo = {
-    content: MessageText | MessageImage;
-    id: string;
-    createdAt: number;
+    text: string;
+    image: string;
     completed: boolean;
-    tags: string[];
 }
 
-export type Message = MessageText | MessageImage | MessageToDo;
+export type Message = {
+    id: string;
+    tags: string[];
+    type: "text" | "image" | "todo";
+    createdAt: number;
+    updatedAt: number;
+    content: MessageText | MessageImage | MessageToDo;
+    threadId: string;
+
+}
 
 

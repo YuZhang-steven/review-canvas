@@ -22,7 +22,7 @@ export default function World() {
 
     return (
         <div id="world"
-            className="absolute top-0 left-0 overflow-hidden"
+            className="absolute top-0 left-0 "
             style={{
                 transform: `translate(${cam.tx}px, ${cam.ty}px) scale(${cam.scale})`,
                 transformOrigin: '0 0',

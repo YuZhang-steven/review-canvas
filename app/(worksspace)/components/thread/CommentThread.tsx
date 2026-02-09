@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { threadMap } from "../../dataStore/threadMap";
 import { useCanvasCameraStore } from "../../state/useCanvasCameraStore";
 import { useCurrentSelectedStore } from "../../state/useCurrentSelectedStore";
 import { useCurrToolStore } from "../../state/useCurrToolStore";
+import { Message } from "../../type/Message";
 
 type CommentThreadProps = {
     threadId: string;
@@ -11,10 +13,14 @@ export default function CommentThread({ threadId }: CommentThreadProps) {
     const currentTool = useCurrToolStore((state) => state.currentTool);
     const setCurrentSelected = useCurrentSelectedStore.getState().setCurrentSelected;
 
+    const [messageArr, setMessageArr] = useState<Message[]>([]);
+
+
+
     const thread = threadMap.get(threadId);
     if (!thread) return null;
 
-    const { x, y, id, title, messages } = thread;
+    const { x, y, id, title, messagesId } = thread;
     const cam = useCanvasCameraStore((state) => state.cam);
 
     // Counter-scale so pin stays same size regardless of zoom
@@ -41,7 +47,7 @@ export default function CommentThread({ threadId }: CommentThreadProps) {
                 transformOrigin: 'center',
             }}
             onClick={handleClick}
-            title={title || `Thread: ${messages.length} comments`}
+            title={title || `Thread: ${messagesId.length} comments`}
         >
             {/* Pin circle with hover effect */}
             <div className="w-full h-full rounded-full bg-linear-to-br from-amber-400 to-orange-500 shadow-lg
@@ -51,7 +57,7 @@ export default function CommentThread({ threadId }: CommentThreadProps) {
                 border-2 border-white/30">
                 {/* Message count indicator */}
                 <span className="text-white text-xs font-semibold drop-shadow-md">
-                    {messages.length}
+                    {messagesId.length}
                 </span>
             </div>
         </div>

@@ -1,6 +1,4 @@
 import { generateId } from "../lib/generateId";
-
-import { useThreadStore } from "../state/useThreadStore";
 import { Thread } from "../type/Thread";
 
 export class ThreadMap {
@@ -21,10 +19,9 @@ export class ThreadMap {
       updatedAt: Date.now(),
       title: "",
       description: "",
-      messages: [],
+      messagesId: [],
     };
     this.store.set(thread.id, thread);
-    useThreadStore.getState().addThreadId(id);
     return id;
   }
 
@@ -35,11 +32,9 @@ export class ThreadMap {
 
   delete(id: string): boolean {
     const deleted = this.store.delete(id);
-    if (deleted) {
-      useThreadStore.getState().removeThreadId(id);
-    }
     return deleted;
   }
+
   size(): number {
     return this.store.size;
   }

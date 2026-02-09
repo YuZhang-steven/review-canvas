@@ -1,7 +1,7 @@
 
 import { useRef } from "react";
 import { screenToWorld } from "../../lib/viewScreenCoordTrans";
-import { createThreadAt } from "../../lib/creatThreadAt";
+import { createThreadAt } from "../../lib/threadsHelper";
 import { threadMap } from "../../dataStore/threadMap";
 
 import { useCurrToolStore } from "../../state/useCurrToolStore";
