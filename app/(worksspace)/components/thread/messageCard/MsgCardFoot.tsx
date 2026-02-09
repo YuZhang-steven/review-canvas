@@ -6,14 +6,14 @@ import { useMessageStore } from "../../../state/useMessageStore";
 
 type MsgCardFootProps = {
     id: string;
-
     createdAt: number;
+    setIsEditing: (isEditing: boolean) => void;
 }
 
-export default function MsgCardFoot({ id, createdAt }: MsgCardFootProps) {
+export default function MsgCardFoot({ id, createdAt, setIsEditing }: MsgCardFootProps) {
     const [isHovered, setIsHovered] = useState(false);
 
-    const { deleteMessage, updateText, changeToTodo, changeTodoToText } = useMessageStore();
+    const { deleteMessage, changeToTodo, changeTodoToText } = useMessageStore();
 
     const handleDelete = () => {
         if (confirm("Are you sure you want to delete this message?")) {
@@ -22,20 +22,7 @@ export default function MsgCardFoot({ id, createdAt }: MsgCardFootProps) {
     };
 
     const handleEditText = () => {
-        const message = useMessageStore.getState().getMessage(id);
-        if (!message) return;
-
-        let currentText = "";
-        if (message.type === "text") {
-            currentText = (message.content as { text: string }).text;
-        } else if (message.type === "todo") {
-            currentText = (message.content as { text: string }).text;
-        }
-
-        const newText = prompt("Edit message:", currentText);
-        if (newText !== null && newText !== currentText) {
-            updateText(id, newText);
-        }
+        setIsEditing(true);
     };
 
     const handleChangeType = () => {

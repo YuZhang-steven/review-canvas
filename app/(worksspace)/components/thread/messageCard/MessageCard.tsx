@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react";
 import { useMessageStore } from "../../../state/useMessageStore";
 import { MessageImage, MessageText, MessageToDo } from "../../../type/Message";
 import MsgCardFoot from "./MsgCardFoot";
@@ -8,6 +9,7 @@ import MsgText from "./MsgText";
 import MsgTodo from "./MsgTodo";
 import MessageCardWrapper from "../MessageCardWrapper";
 import MsgTagsHead from "./MsgTagsHead";
+import MsgTextEdit from "./MsgTextEdit";
 
 type MessageCardProps = {
     id: string;
@@ -18,6 +20,7 @@ export default function MessageCard({ id }: MessageCardProps) {
     if (!message) return null;
 
     const { type, content, createdAt, tags } = message;
+    const [isEditing, setIsEditing] = useState(false);
 
     return (
         <MessageCardWrapper>
@@ -26,16 +29,31 @@ export default function MessageCard({ id }: MessageCardProps) {
 
                 <MsgTagsHead id={id} tags={tags} />
                 {/* Message Content */}
-                {type === 'text' && (
-                    <MsgText content={content as MessageText} />
+                {isEditing ? (
+                    <MsgTextEdit
+                        id={id}
+                        type={type}
+                        content={content}
+                        setIsEditing={setIsEditing}
+                    />
+                ) : (
+                    <>
+                        {type === 'text' && (
+                            <MsgText content={content as MessageText} />
+                        )}
+                        {type === 'image' && (
+                            <MsgImage content={content as MessageImage} />
+                        )}
+                        {type === 'todo' && (
+                            <MsgTodo id={id} content={content as MessageToDo} />
+                        )}
+                    </>
                 )}
-                {type === 'image' && (
-                    <MsgImage content={content as MessageImage} />
-                )}
-                {type === 'todo' && (
-                    <MsgTodo content={content as MessageToDo} />
-                )}
-                <MsgCardFoot id={id} createdAt={createdAt} />
+                <MsgCardFoot
+                    id={id}
+                    setIsEditing={setIsEditing}
+                    createdAt={createdAt}
+                />
             </div>
         </MessageCardWrapper>
     );
