@@ -1,7 +1,7 @@
 "use client"
-import { threadMap } from "../dataStore/threadMap";
-import { useCurrentSelectedStore } from "../state/useCurrentSelectedStore";
-import FocusThreadButton from "./FocusThreadButton";
+import { threadMap } from "../../dataStore/threadMap";
+import { useCurrentSelectedStore } from "../../state/useCurrentSelectedStore";
+import FocusThreadButton from "../FocusThreadButton";
 
 
 export default function ThreadContent() {

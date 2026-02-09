@@ -1,5 +1,5 @@
 import { useCurrentSelectedStore } from "../state/useCurrentSelectedStore";
-import ThreadContent from "./ThreadContent";
+import ThreadContent from "./thread/ThreadContent";
 
 export default function SideBarContent() {
     const currentSelectedType = useCurrentSelectedStore(state => state.currentSelectedType);
