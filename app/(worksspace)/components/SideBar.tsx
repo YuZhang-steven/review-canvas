@@ -28,7 +28,7 @@ export default function SideBar() {
                     flex flex-col gap-4
                 `}
             >
-                <div className="p-4">
+                <div className="p-4 h-full">
                     <div className=" text-white flex items-center justify-between ">
                         <h2 className="text-lg font-bold">Sidebar</h2>
                         <button

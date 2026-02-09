@@ -23,7 +23,7 @@ export default function AddMessageCard() {
     };
 
     return (
-        <div className="sticky bottom-0 pt-3 pb-1 bg-white">
+        <div className="sticky bottom-0 pt-3 pb-1 ">
             <div className="flex items-end gap-2">
                 <textarea
                     value={text}

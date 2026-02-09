@@ -1,9 +1,9 @@
-import { useState } from "react";
+
 import { threadMap } from "../../dataStore/threadMap";
 import { useCanvasCameraStore } from "../../state/useCanvasCameraStore";
 import { useCurrentSelectedStore } from "../../state/useCurrentSelectedStore";
 import { useCurrToolStore } from "../../state/useCurrToolStore";
-import { Message } from "../../type/Message";
+
 
 type CommentThreadProps = {
     threadId: string;
@@ -12,10 +12,6 @@ type CommentThreadProps = {
 export default function CommentThread({ threadId }: CommentThreadProps) {
     const currentTool = useCurrToolStore((state) => state.currentTool);
     const setCurrentSelected = useCurrentSelectedStore.getState().setCurrentSelected;
-
-    const [messageArr, setMessageArr] = useState<Message[]>([]);
-
-
 
     const thread = threadMap.get(threadId);
     if (!thread) return null;

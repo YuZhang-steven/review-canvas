@@ -13,29 +13,33 @@ export default function ThreadContent() {
     const thread = threadMap.get(currentSelectedId);
     if (!thread) return null;
     const { x, y, id, title, description } = thread;
+
     const messageIds = getMessageIdsByThreadId(id);
 
     return (
-        <div className="flex flex-col h-full">
-            <div className="shrink-0">
-                <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-semibold text-blue-400">Located It</span>
-                    <FocusThreadButton />
+        <div id="thread-content" className="flex flex-col h-full justify-between pb-8">
+            <div>
+                <div className="shrink-0">
+                    <div className="flex items-center justify-between mb-4">
+                        <span className="text-sm font-semibold text-blue-400">Located It</span>
+                        <FocusThreadButton />
+                    </div>
+
+                    <p>id</p>
+                    <p>{id}</p>
+                    <h2>{title}</h2>
+                    <p>{description}</p>
                 </div>
 
-                <p>id</p>
-                <p>{id}</p>
-                <h2>{title}</h2>
-                <p>{description}</p>
-            </div>
-
-            <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
-                <div className="flex flex-col gap-3">
-                    {messageIds.map((messageId) => (
-                        <MessageCard key={messageId} id={messageId} />
-                    ))}
+                <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+                    <div className="flex flex-col gap-3">
+                        {messageIds.map((messageId) => (
+                            <MessageCard key={messageId} id={messageId} />
+                        ))}
+                    </div>
                 </div>
             </div>
+
 
             <AddMessageCard />
         </div>
