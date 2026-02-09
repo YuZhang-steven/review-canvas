@@ -7,11 +7,10 @@ import { useThreadStore } from "../../state/useThreadStore"
 export default function FocusThreadButton() {
     const { cam, setCam } = useCanvasCameraStore()
     const currentSelectedId = useCurrentSelectedStore(state => state.currentSelectedId)
+    if (!currentSelectedId) return
+    const thread = useThreadStore(state => state.threadsById[currentSelectedId]);
 
     const handleFocus = () => {
-        if (!currentSelectedId) return
-
-        const thread = useThreadStore(state => state.threadsById[currentSelectedId]);
         if (!thread) return
 
         const { x, y } = thread
