@@ -13,5 +13,8 @@ export const useCurrentSelectedStore = create<CurrentSelectedState>((set) => ({
   currentSelectedId: null,
   currentSelectedType: null,
   setCurrentSelected: (id: string | null, type: SelecableType) => set({ currentSelectedId: id, currentSelectedType: type }),
-  clearCurrentSelectedId: () => set({ currentSelectedId: null }),
+  clearCurrentSelectedId: () => set({
+    currentSelectedId: null,
+    currentSelectedType: null
+  }),
 }));
