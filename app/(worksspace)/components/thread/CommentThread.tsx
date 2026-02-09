@@ -1,11 +1,16 @@
 import { threadMap } from "../../dataStore/threadMap";
 import { useCanvasCameraStore } from "../../state/useCanvasCameraStore";
+import { useCurrentSelectedStore } from "../../state/useCurrentSelectedStore";
+import { useCurrToolStore } from "../../state/useCurrToolStore";
 
 type CommentThreadProps = {
     threadId: string;
 }
 
 export default function CommentThread({ threadId }: CommentThreadProps) {
+    const currentTool = useCurrToolStore((state) => state.currentTool);
+    const setCurrentSelected = useCurrentSelectedStore.getState().setCurrentSelected;
+
     const thread = threadMap.get(threadId);
     if (!thread) return null;
 
@@ -19,8 +24,9 @@ export default function CommentThread({ threadId }: CommentThreadProps) {
 
     const handleClick = (e: React.MouseEvent) => {
         e.stopPropagation();
+        if (currentTool !== "select") return;
         console.log('Thread clicked:', id);
-        // TODO: Add click handler
+        setCurrentSelected(id, "thread");
     };
 
     return (

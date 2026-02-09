@@ -2,10 +2,20 @@
 import { X } from "lucide-react";
 import SideBarContent from "./SideBarContent";
 import { useSideBarOpenStore } from "../state/useSideBarOpenStore";
+import { useCurrentSelectedStore } from "../state/useCurrentSelectedStore";
+import { useEffect } from "react";
 
 export default function SideBar() {
     const sideBarOpen = useSideBarOpenStore(state => state.sideBarOpen);
     const setSideBarOpen = useSideBarOpenStore(state => state.setSideBarOpen);
+    const currentSelected = useCurrentSelectedStore(state => state.currentSelectedId);
+
+    useEffect(() => {
+        console.log("selected", currentSelected);
+        if (currentSelected) {
+            setSideBarOpen(true);
+        }
+    }, [currentSelected]);
     return (
         <div id="sidebar" className="group h-full absolute top-0 right-0 z-50">
             {/* Sidebar body - width animates based on open state */}
