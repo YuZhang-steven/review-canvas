@@ -1,6 +1,7 @@
 
 import { focusThread } from "../../lib/cameraHelper";
 import { useCanvasCameraStore } from "../../state/useCanvasCameraStore";
+import { useCurrentSelectedStore } from "../../state/useCurrentSelectedStore";
 import { useThreadStore } from "../../state/useThreadStore";
 import { Message } from "../../type/Message";
 import TodoButton from "../TodoButton";
@@ -14,7 +15,11 @@ export default function MessageListCard({ id, message }: MessageListCardProps) {
     const thread = useThreadStore(state => state.threadsById[threadId]);
     const cam = useCanvasCameraStore((state) => state.cam);
     const setCam = useCanvasCameraStore((state) => state.setCam);
-    const handleClick = () => {
+    const setCurrentSelected = useCurrentSelectedStore.getState().setCurrentSelected;
+
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation();
+        setCurrentSelected(threadId, "thread");
         focusThread({ thread, cam, setCam })
     }
 
