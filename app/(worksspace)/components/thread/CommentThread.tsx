@@ -8,6 +8,12 @@ export default function CommentThread({ threadId }: CommentThreadProps) {
     if (!thread) return null;
     const { x, y, id, title, description, messages } = thread;
     return (
-        <div>{x},{y}</div>
+        <div
+            className="absolute"
+            style={{
+                left: x,
+                top: y,
+            }}
+        >{x},{y}</div>
     )
 }
