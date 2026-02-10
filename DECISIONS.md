@@ -39,7 +39,7 @@ I needed fast reads/writes for threads and comments, plus predictable UI updates
 I first stored threads/messages in a **Map** and kept only ID lists in Zustand.
 
 ### What went wrong
-This made rendering updates harder to reason about. Some UI updates required extra work to ensure components re-rendered (e.g., adding a comment to a thread), because React components weren’t subscribing to the data structure that actually changed.
+ Some UI updates required extra work to ensure components re-rendered (e.g., adding a comment to a thread), because React components weren’t subscribing to the data structure that actually changed.
 
 ### Decision
 I moved thread/message storage fully into Zustand as normalized objects:
@@ -57,7 +57,6 @@ Components subscribe via selectors (and shallow comparison where appropriate) so
 
 ### Trade-offs / future
 - Store update functions become more verbose than Map mutations (must update immutably).
-- If performance becomes a concern at scale, I’d consider indexing (e.g., per-thread message IDs), memoized selectors, and/or persistence.
 
 ---
 
@@ -78,7 +77,6 @@ I chose the **sidebar panel**.
 
 ### Why
 - Better supports a real review workflow: users can keep the thread visible while navigating to other regions of the canvas.
-- Works well with the dashboard/filter view (Open/Resolved/All).
 
 ### Trade-offs / mitigation
 - The sidebar weakens the spatial connection between the pin and the thread content.
