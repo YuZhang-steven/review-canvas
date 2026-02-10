@@ -1,10 +1,11 @@
 
-import CancasWorkapace from "./(worksspace)/CancasWorkapace";
+import CanvasWorkspace from "./(worksspace)/CanvasWorkspace";
+
 
 export default function Home() {
   return (
     <div className="h-screen w-screen overflow-hidden">
-      <CancasWorkapace />
+      <CanvasWorkspace />
     </div>
   );
 }
