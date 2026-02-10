@@ -1,17 +1,21 @@
+
 A canvas-based review and annotation app built with Next.js, React, and Zustand. It provides an infinite canvas workspace where users can create comment threads and manage tasks.
 
 ## Features Implemented
 
 ### Canvas
+
 - Infinite canvas with smooth pan and zoom controls
 
 ### Comment Threads
+
 - Create a comment pin anywhere on the canvas by clicking while using the Comment tool
 - Add / delete / edit comments in a thread
 - Convert a comment into a To-Do item or a text item
 - Add tags to a comment
 
 ### Comment Dashboard
+
 - View all comments in a dashboard with filters (All, Open, Resolved)
 - Click a comment to move the camera to the corresponding thread pin
 
