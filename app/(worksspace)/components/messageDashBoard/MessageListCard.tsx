@@ -17,6 +17,9 @@ export default function MessageListCard({ id, message }: MessageListCardProps) {
     const setCam = useCanvasCameraStore((state) => state.setCam);
     const setCurrentSelected = useCurrentSelectedStore.getState().setCurrentSelected;
 
+    const idCut = threadId?.match(/^thread-([^-]+)-/);
+    const threadIdCutted = idCut ? idCut[1] : "";
+
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
         setCurrentSelected(threadId, "thread");
@@ -33,8 +36,10 @@ export default function MessageListCard({ id, message }: MessageListCardProps) {
             onClick={handleClick}
         >
             <div className="flex items-center justify-between mb-1">
-                <span className="text-sm font-semibold text-gray-800">{threadId}</span>
-                <span className="text-xs text-gray-400">{updatedAt}</span>
+                <span className="text-sm font-semibold text-gray-800">{threadIdCutted}</span>
+                <span className="text-xs text-gray-400">{
+                    new Date(updatedAt).toLocaleString()
+                }</span>
             </div>
             <div className="flex items-center justify-between mb-1">
                 {
