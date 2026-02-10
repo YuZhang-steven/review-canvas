@@ -15,7 +15,7 @@ export default function Viewport() {
             {...handlers}
         >
             {/* HUD */}
-            <div className="absolute left-3 top-3 z-50 rounded bg-white/80 px-2 py-1 text-xs">
+            <div className="absolute left-3 top-3 z-50 rounded text-blue-600 font-bold px-2 py-1 text-xs">
                 {Math.round(cam.scale * 100)}%
             </div>
             <World />

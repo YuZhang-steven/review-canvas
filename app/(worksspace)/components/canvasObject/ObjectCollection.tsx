@@ -19,7 +19,7 @@ export default function ObjectCollection() {
                 <TestImage />
             </CanvasObject>
             <CanvasObject
-                id="test-image"
+                id="test-circle"
                 x={100}
                 y={400}
                 width={100}
@@ -28,7 +28,7 @@ export default function ObjectCollection() {
                 <Circle />
             </CanvasObject>
             <CanvasObject
-                id="test-image"
+                id="test-triangles"
                 x={500}
                 y={200}
                 width={100}
