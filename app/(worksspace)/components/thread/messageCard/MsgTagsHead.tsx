@@ -70,7 +70,7 @@ export default function MsgTagsHead({ id, tags = [] }: MsgTagsHeadProps) {
             ) : (
                 <button
                     onClick={() => setIsAddingTag(true)}
-                    className="shrink-0 p-0.5 text-gray-400 hover:text-blue-500 hover:bg-blue-50 rounded transition-colors"
+                    className="shrink-0 p-0.5 text-gray-400 hover:text-blue-500 hover:bg-blue-50 rounded transition-colors cursor-pointer"
                     title="Add tag"
                 >
                     <Plus size={14} />
