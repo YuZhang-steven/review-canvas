@@ -6,8 +6,7 @@ A canvas-based review and annotation application built with Next.js, React, and 
 
 ### Canvas
 
-- infinite canvas with
-- smooth zoom and pan controls
+- Infinite canvas with smooth zoom and pan controls
 
 ### Comment Threads
 
@@ -16,99 +15,78 @@ A canvas-based review and annotation application built with Next.js, React, and 
 - Change comment to a To-Do item, or text item
 - Add tags to a comment
 
-### Comment DashBoard
+### Comment Dashboard
 
 - View all comments in a dashboard with filtering capabilities (All, Open, Resolved)
 - Click a comment and move camera to the thread pin
 
+## Getting Started
+
+Try the live demo on Vercel:
+[review-canvas-lemon.vercel.app](https://review-canvas-lemon.vercel.app)
+
+### 1. Clone the Repository
+
+```bash
+# first
+git clone https://github.com/YuZhang-steven/review-canvas
+# then
+cd review-canvas
+```
+
+### 2. Run the development server
+
+```bash
+# using npm
+npm install
+npm run dev
+
+# using yarn
+yarn install
+yarn dev
+
+# using pnpm
+pnpm install
+pnpm dev
+
+# using bun
+bun install
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
 ## Tech Stack
 
 - **Framework**: Next.js 16.1.6 (App Router)
-- **Language**: TypeScript 5
-- **Styling**: TailwindCSS 4
+- **Language**: TypeScript
+- **Styling**: TailwindCSS
 - **State Management**: Zustand 5.0.11
-- **Icons**: Lucide React
-- **Runtime**: React 19.2.3 / React DOM 19.2.3
 
 ## Project Structure
 
+### Basic Folder Structures
+
 ```text
 review-canvas/
-├── app/
-│   ├── (worksspace)/
-│   │   ├── CancasWorkapace.tsx        # Main workspace container
-│   │   ├── components/
-│   │   │   ├── SideBar.tsx            # Collapsible sidebar (right side)
-│   │   │   ├── SideBarContent.tsx     # Sidebar content router
-│   │   │   ├── ToolBar.tsx            # Bottom toolbar with tool buttons
-│   │   │   ├── Viewport.tsx           # Canvas viewport wrapper
-│   │   │   ├── World.tsx              # Infinite canvas world container
-│   │   │   ├── canvasObject/
-│   │   │   │   ├── CanvasObject.tsx         # Object wrapper with position
-│   │   │   │   ├── CanvasObjectBase.tsx     # Bounding box visualizer
-│   │   │   │   └── ObjectCollection.tsx     # Collection of test objects
-│   │   │   ├── messageDashBoard/
-│   │   │   │   ├── MessageDashBoard.tsx     # All comments dashboard
-│   │   │   │   ├── MessageList.tsx           # Filtered message list
-│   │   │   │   ├── MessageListCard.tsx      # Individual message card
-│   │   │   │   ├── FilterBar.tsx            # Filter tabs (All/Open/Resolved)
-│   │   │   │   └── FilterBarBtn.tsx        # Filter button component
-│   │   │   ├── thread/
-│   │   │   │   ├── CommentThread.tsx        # Pin/marker on canvas
-│   │   │   │   ├── ThreadCollection.tsx     # All threads collection
-│   │   │   │   ├── ThreadContent.tsx        # Thread detail view in sidebar
-│   │   │   │   ├── FocusThreadButton.tsx    # Camera focus button
-│   │   │   │   ├── AddMessageCard.tsx       # Message input form
-│   │   │   │   ├── MessageCardWrapper.tsx   # Message card container
-│   │   │   │   ├── MessageCardWraper.tsx    # Alternative wrapper
-│   │   │   │   └── messageCard/
-│   │   │   │       ├── MessageCard.tsx      # Main message card
-│   │   │   │       ├── MsgText.tsx          # Text message display
-│   │   │   │       ├── MsgTextEdit.tsx      # Text editing component
-│   │   │   │       ├── MsgImage.tsx         # Image message display
-│   │   │   │       ├── MsgTodo.tsx          # Todo message display
-│   │   │   │       ├── MsgTagsHead.tsx      # Tags management header
-│   │   │   │       └── MsgCardFoot.tsx      # Message card footer
-│   │   │   └── toolbar/
-│   │   │       ├── ToolBar.tsx              # Bottom toolbar container
-│   │   │       ├── selectToolButton.tsx     # Select tool button
-│   │   │       └── commentToolButton.tsx    # Comment tool button
-│   │   ├── hooks/
-│   │   │   ├── useViewPortControls.ts       # Viewport input handlers
-│   │   │   ├── useLeftClickHandle.ts        # Left click handler
-│   │   │   ├── useRightClickHandle.ts      # Right click pan handler
-│   │   │   └── toolClick/
-│   │   │       └── useCommentToolClick.ts   # Comment placement logic
-│   │   ├── lib/
-│   │   │   ├── cameraHelper.ts              # Camera zoom/focus helpers
-│   │   │   ├── viewScreenCoordTrans.ts      # Screen/world coordinate conversion
-│   │   │   ├── dom.ts                       # DOM utilities
-│   │   │   └── generateId.ts                # ID generation utilities
-│   │   ├── state/
-│   │   │   ├── useCanvasCameraStore.ts      # Camera position/scale state
-│   │   │   ├── useThreadStore.ts            # Thread data management
-│   │   │   ├── useMessageStore.ts           # Message data management
-│   │   │   ├── useCurrToolStore.ts          # Current selected tool
-│   │   │   ├── useCurrentSelectedStore.ts   # Currently selected item
-│   │   │   └── useSideBarOpenStore.ts       # Sidebar open state
-│   │   ├── type/
-│   │   │   ├── CanvasCamera.ts              # Camera type definitions
-│   │   │   └── Thread.ts                    # Thread type definitions
-│   │   ├── testObjects/
-│   │   │   ├── Circle.tsx                   # Test circle object
-│   │   │   ├── TestImage.tsx               # Test image object
-│   │   │   └── Triangles.tsx               # Test triangle object
-│   │   └── lib/
-│   │       └── generateId.ts               # ID generation utilities
-│   ├── globals.css                          # Global styles (Tailwind)
-│   ├── layout.tsx                           # Root layout
-│   └── page.tsx                             # Home page
-├── next.config.ts                           # Next.js configuration
-├── postcss.config.mjs                       # PostCSS configuration
-├── tailwind.config.ts                       # Tailwind configuration
-├── tsconfig.json                            # TypeScript configuration
-├── package.json                             # Dependencies
-└── README.md                                # This file
+└── app/                          # Next.js App Router pages and Layout
+    ├── (worksspace)/
+    │   ├── CancasWorkapace.tsx   # Main workspace container
+    │   ├── components/           # Major Component folder
+    │   │   ├── SideBar.tsx       # Sidebar Layout
+    │   │   ├── SideBarContent.tsx # Sidebar content switch
+    │   │   ├── ToolBar.tsx       # Toolbar layout
+    │   │   ├── Viewport.tsx      # Camera and view related wrapper
+    │   │   ├── World.tsx         # Canvas content container
+    │   │   ├── canvasObject/     # Image or geometry objects on canvas
+    │   │   ├── messageDashBoard/ # Comment Overview Components
+    │   │   ├── thread/           # Thread related Component
+    │   │   └── toolbar/          # Tool Bar related component
+    │   ├── hooks/                # React Hooks
+    │   ├── lib/                  # Shared utilities, helpers
+    │   ├── state/                # Global State (Zustand stores)
+    │   ├── type/                 # TypeScript type definitions
+    │   └── testObjects/          # Three test objects on the canvas
 ```
 
 ## Features
@@ -183,44 +161,14 @@ review-canvas/
 
 The application uses 6 Zustand stores:
 
-| Store                     | Purpose                             |
-|---------------------------|-------------------------------------|
-| `useCanvasCameraStore`     | Camera position (x, y) and scale    |
-| `useThreadStore`          | Thread CRUD operations              |
-| `useMessageStore`         | Message CRUD operations             |
-| `useCurrToolStore`        | Current active tool                 |
+| Store                     | Purpose                            |
+|---------------------------|------------------------------------|
+| `useCanvasCameraStore`     | Camera position (x, y) and scale   |
+| `useThreadStore`          | Thread CRUD operations             |
+| `useMessageStore`         | Message CRUD operations            |
+| `useCurrToolStore`        | Current active tool                |
 | `useCurrentSelectedStore` | Currently selected item            |
-| `useSideBarOpenStore`     | Sidebar visibility                  |
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- pnpm (recommended) or npm/yarn
-
-### Installation
-
-```bash
-# Install dependencies
-pnpm install
-
-# Run development server
-pnpm dev
-
-# Build for production
-pnpm build
-
-# Start production server
-pnpm start
-
-# Run linting
-pnpm lint
-```
-
-### Environment Variables
-
-No environment variables required for local development.
+| `useSideBarOpenStore`     | Sidebar visibility                 |
 
 ## Architecture
 
@@ -274,7 +222,7 @@ Unique IDs are generated with timestamp and random suffix:
 
 ## Styling
 
-The project uses TailwindCSS 4 with a custom color scheme:
+The project uses TailwindCSS with a custom color scheme:
 
 - **Primary**: Amber/Orange (brand color)
 - **Accent**: Blue (interactive elements)
