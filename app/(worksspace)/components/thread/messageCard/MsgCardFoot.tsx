@@ -55,7 +55,7 @@ export default function MsgCardFoot({ id, createdAt, setIsEditing }: MsgCardFoot
                 {/* Change Type Button */}
                 <button
                     onClick={handleChangeType}
-                    className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded transition-colors"
+                    className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded transition-colors cursor-pointer"
                     title="Change message type"
                 >
                     <Layers size={14} />
@@ -64,7 +64,7 @@ export default function MsgCardFoot({ id, createdAt, setIsEditing }: MsgCardFoot
                 {/* Edit Text Button */}
                 <button
                     onClick={handleEditText}
-                    className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded transition-colors"
+                    className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded transition-colors cursor-pointer"
                     title="Edit text"
                 >
                     <Pencil size={14} />
@@ -73,7 +73,7 @@ export default function MsgCardFoot({ id, createdAt, setIsEditing }: MsgCardFoot
                 {/* Delete Button */}
                 <button
                     onClick={handleDelete}
-                    className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded transition-colors"
+                    className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded transition-colors cursor-pointer"
                     title="Delete message"
                 >
                     <Trash2 size={14} />
