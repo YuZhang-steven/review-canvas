@@ -29,7 +29,7 @@ export default function SideBar() {
             >
                 <div className="p-4 flex flex-col h-full overflow-hidden">
                     <div className=" text-white flex items-center justify-between shrink-0">
-                        <h2 className="text-lg font-bold">Sidebar</h2>
+                        {/* <h2 className="text-lg font-bold">Sidebar</h2> */}
                         <button
                             onClick={() => setSideBarOpen(false)}
                             className="p-1 hover:bg-white/20 rounded transition-colors"

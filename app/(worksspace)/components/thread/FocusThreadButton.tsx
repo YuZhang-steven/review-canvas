@@ -21,12 +21,12 @@ export default function FocusThreadButton() {
                 flex items-center justify-center
                 hover:bg-white/20 hover:scale-105
                 cursor-pointer
-                text-blue-400
+                text-blue-600
             "
             title="Focus on thread"
         >
             <CrosshairIcon
-                size={20}
+                size={25}
             />
         </button>
     )
