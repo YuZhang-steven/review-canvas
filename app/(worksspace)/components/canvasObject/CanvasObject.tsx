@@ -1,4 +1,5 @@
 
+import { useState } from 'react'
 import CanvasObjectBase from './CanvasObjectBase'
 
 
@@ -23,6 +24,13 @@ export default function CanvasObject({
     zIndex = 0,
     children
 }: CanvasObjectProps) {
+    const [hover, setHover] = useState(false);
+    const handleMouseEnter = () => {
+        setHover(true);
+    }
+    const handleMouseLeave = () => {
+        setHover(false);
+    }
     return (
         <div
             className="absolute"
@@ -40,16 +48,22 @@ export default function CanvasObject({
                 width={width}
                 height={height}
                 zIndex={zIndex}
+                hover={hover}
             />
 
             {/* Real object as children */}
             <div
-                className="absolute top-0 left-0"
+                className="absolute top-0 left-0 "
                 style={{
                     width,
                     height,
-                    transform: `rotate(${rotation}deg)`
+                    transform: `rotate(${rotation}deg)
+
+                    `
                 }}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+
             >
                 {children}
             </div>
