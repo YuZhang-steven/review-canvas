@@ -1,7 +1,8 @@
-import Circle from "../testObjects/Circle";
-import TestImage from "../testObjects/TestImage";
-import Triangles from "../testObjects/Triangles";
-import CanvasObject from "./canvasObject/CanvasObject";
+import Circle from "../../testObjects/Circle";
+import TestImage from "../../testObjects/TestImage";
+import Triangles from "../../testObjects/Triangles";
+import CanvasObject from "./CanvasObject";
+
 
 
 export default function ObjectCollection() {
@@ -12,8 +13,8 @@ export default function ObjectCollection() {
                 id="test-image"
                 x={300}
                 y={100}
-                width={300}
-                height={100}
+                width={150}
+                height={150}
             >
                 <TestImage />
             </CanvasObject>
@@ -21,7 +22,7 @@ export default function ObjectCollection() {
                 id="test-image"
                 x={100}
                 y={400}
-                width={300}
+                width={100}
                 height={100}
             >
                 <Circle />
@@ -30,7 +31,7 @@ export default function ObjectCollection() {
                 id="test-image"
                 x={500}
                 y={200}
-                width={300}
+                width={100}
                 height={100}
             >
                 <Triangles />

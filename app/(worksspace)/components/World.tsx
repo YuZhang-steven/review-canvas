@@ -1,9 +1,10 @@
 
-import ObjectCollection from "./ObjectCollection";
+
 import ThreadCollection from "./thread/ThreadCollection";
 import { useCanvasCameraStore } from "../state/useCanvasCameraStore";
 import { useCurrentSelectedStore } from "../state/useCurrentSelectedStore";
 import { useSideBarOpenStore } from "../state/useSideBarOpenStore";
+import ObjectCollection from "./canvasObject/ObjectCollection";
 
 
 

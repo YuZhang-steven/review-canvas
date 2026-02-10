@@ -58,7 +58,6 @@ export default function CanvasObject({
                     width,
                     height,
                     transform: `rotate(${rotation}deg)
-
                     `
                 }}
                 onMouseEnter={handleMouseEnter}
