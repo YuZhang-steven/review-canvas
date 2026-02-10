@@ -1,18 +1,25 @@
 # Review Canvas
 
-A canvas-based review and annotation application built with Next.js 16, React 19, and Zustand. This application provides an infinite canvas workspace where users can create comment threads, manage tasks, and collaborate on visual content reviews.
+A canvas-based review and annotation application built with Next.js, React, and Zustand. This application provides an infinite canvas workspace where users can create comment threads, manage tasks.
 
-## Overview
+## Features Implemented
 
-Review Canvas is a visual collaboration tool that allows users to:
+### Canvas
 
-- Navigate an **infinite canvas** with smooth zoom and pan controls
-- Create **comment threads** at any location on the canvas by clicking with the comment tool
-- Add **messages** to threads including text, images, and todo items
-- **Focus** on specific threads to center them in the viewport
-- View all comments in a **dashboard** with filtering capabilities (All, Open, Resolved)
-- Manage **tags** on messages for organization
-- Interact with **test objects** (image, circle, triangle) to demonstrate the canvas system
+- infinite canvas with
+- smooth zoom and pan controls
+
+### Comment Threads
+
+- Create comment pin at any location on the canvas by clicking with the comment tool
+- Add/Delete/Edit comments in a thread
+- Change comment to a To-Do item, or text item
+- Add tags to a comment
+
+### Comment DashBoard
+
+- View all comments in a dashboard with filtering capabilities (All, Open, Resolved)
+- Click a comment and move camera to the thread pin
 
 ## Tech Stack
 
